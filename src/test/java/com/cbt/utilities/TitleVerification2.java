@@ -9,26 +9,32 @@ public class TitleVerification2 {
     public static void main(String[] args) {
 
         List<String> urls = Arrays.asList("https://www.luluandgeorgia.com",
-                                        "https://wayfair.com/",
-                                        "https://walmart.com",
-                                        "https://westelm.com/");
+                "https://wayfair.com/",
+                "https://walmart.com",
+                "https://westelm.com/");
 
         WebDriver driver = BrowserFactory.getDriver("chrome");
 
-        for ( String url : urls){
+        for (String url : urls) {
 
             driver.get(url);
+            String currentUrl = driver.getCurrentUrl();
+            System.out.println("currentUrl = " + currentUrl);
+            String currentTitle = driver.getTitle();
+            System.out.println(currentTitle.toLowerCase().replaceAll(" ", ""));
+            if (currentTitle.contains(currentUrl)) {
 
-            if (url.contains(driver.getTitle().replace(" ","").toLowerCase())){
-                System.out.println("TEST PASSED!");
-            }else {
-                System.out.println("TEST FAILED!");
-                System.out.println("url = " + url);
-                System.out.println("title = " + driver.getTitle());
+                if (url.contains(driver.getTitle().replace(" ", "").toLowerCase())) {
+                    System.out.println("TEST PASSED!");
+                } else {
+                    System.out.println("TEST FAILED!");
+                    System.out.println("url = " + url);
+                    System.out.println("title = " + driver.getTitle());
+                }
+
+                driver.quit();
+
             }
-
-            driver.quit();
-
         }
     }
 }
