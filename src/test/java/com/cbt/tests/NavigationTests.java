@@ -9,9 +9,9 @@ public class NavigationTests {
     public static void main(String[] args) throws Exception {
         chromeTest();
         Thread.sleep(2000);
-        fireFoxTest();
+        //fireFoxTest();
         Thread.sleep(2000);
-        safariTest();
+        //safariTest();
         Thread.sleep(2000);
 
 
@@ -25,10 +25,11 @@ public class NavigationTests {
         driver.navigate().to("https://etsy.com");
         String title2 = driver.getTitle();
         driver.navigate().back();
-        StringUtilities.verifyEquals(title2,title1);
-        driver.navigate().forward();
         String title3 = driver.getTitle();
-        StringUtilities.verifyEquals(title3,title2);
+        StringUtilities.verifyEquals(title3,title1);
+        driver.navigate().forward();
+        String title4 = driver.getTitle();
+        StringUtilities.verifyEquals(title4,title2);
         Thread.sleep(2000);
         driver.quit();
 
@@ -39,8 +40,8 @@ public class NavigationTests {
         driver.get("http://google.com");
         String title1 = driver.getTitle();
         driver.navigate().to("https://etsy.com");
-        String title2 = driver.getTitle();
         driver.navigate().back();
+        String title2 = driver.getTitle();
         StringUtilities.verifyEquals(title2,title1);
         driver.navigate().forward();
         String title3 = driver.getTitle();
@@ -55,8 +56,8 @@ public class NavigationTests {
         driver.get("http://google.com");
         String title1 = driver.getTitle();
         driver.navigate().to("https://etsy.com");
-        String title2 = driver.getTitle();
         driver.navigate().back();
+        String title2 = driver.getTitle();
         StringUtilities.verifyEquals(title2,title1);
         driver.navigate().forward();
         String title3 = driver.getTitle();
