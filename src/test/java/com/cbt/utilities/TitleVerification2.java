@@ -19,12 +19,12 @@ public class TitleVerification2 {
 
             driver.get(url);
 
-            if (url.contains(driver.getTitle())){
+            if (url.contains(driver.getTitle().replace(" ","").toLowerCase())){
                 System.out.println("TEST PASSED!");
             }else {
                 System.out.println("TEST FAILED!");
-                System.out.println(url);
-                System.out.println(driver.getTitle());
+                System.out.println("url = " + url);
+                System.out.println("title = " + driver.getTitle());
             }
 
             driver.quit();
